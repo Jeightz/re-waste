@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reserves', function (Blueprint $table) {
-            $table->string("reserve_id",50)->primary();
+            $table->uuid("reserve_id")->primary();
             $table->enum("status",["waiting for pickup,recieve,distributed"]);
             $table->date("reserve_at");
-            $table->string("food_id",50);
+            $table->uuid("food_id");
             $table->string("redistributer_id",50);
             $table->foreign("food_id")->references("food_id")->on("food");
             $table->foreign("redistributer_id")->references("id")->on("userauths");

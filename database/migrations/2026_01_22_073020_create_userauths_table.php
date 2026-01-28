@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('userauths', function (Blueprint $table) {
-            $table->string("id",50)->primary();
+            $table->uuid("id")->primary();
             $table->string("username",255);
             $table->string("password",255);
 

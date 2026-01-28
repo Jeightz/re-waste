@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('waste_logs', function (Blueprint $table) {
-            $table->string("waste_id",50)->primary();
-            $table->string("food_id");
+            $table->uuid("waste_id")->primary();
+            $table->uuid("food_id");
             $table->date("expire_at");
             $table->integer("quantity_waste");
             $table->foreign("food_id")->references("food_id")->on("food");

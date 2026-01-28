@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('food', function (Blueprint $table) {
-            $table->string("food_id",50)->primary();
+            $table->uuid("food_id")->primary();
             $table->string("name",255);
             $table->unsignedInteger("quantity");
             $table->enum("category",["fruits,vegetebles,grains,protein foods,dairy"]);
             $table->date("expiry_date");
             $table->enum("status",["available,reserve,distributed,expired"]);
-            $table->string("donor_id",50);
+            $table->uuid("donor_id");
             $table->foreign("donor_id")->references("id")->on("userauths")->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('userinfos', function (Blueprint $table) {
 
-            $table->string("userinfo_id",50)->primary();
+            $table->uuid("userinfo_id")->primary();
             $table->string("name",255);
             $table->string("email",255)->unique();
             $table->enum("role",["donors","admin","redistributer"]);
