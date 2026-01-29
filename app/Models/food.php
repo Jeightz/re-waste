@@ -8,7 +8,7 @@ class Food extends Model
 {
 protected $primaryKey='food_id';
 protected $keyType='string';
-protected $incrementing='false';
+public $incrementing='false';
     protected $fillable=[
         'name'
         ,'quantity'
@@ -18,6 +18,7 @@ protected $incrementing='false';
         ,'donor_id'
         ,'created_at'
         ,'updated_at'];
+
 protected static function boot(){
     parent::boot();
     static::creating(function($model){
@@ -33,4 +34,15 @@ protected static function boot(){
         return $this->belongsTo(UserAuth::class,'donor_id');
     }
 
+public static function findFoodID(string $foodId){
+return self::find($foodId);
+}
+
+public static function fetchAllFoodData(){
+return self::all();
+}
+
+public static function getAvailableFood(){
+return self::where('status','available')->get();
+}
 }

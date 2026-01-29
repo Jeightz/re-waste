@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class distribution_log extends Model
 {
-protected $primaryKey='distribution_log';
+protected $primaryKey='distribution_id';
 protected $keyType='string';
-protected $incrementing=false;
+public $incrementing=false;
 
 protected $fillable=[
 'food_id',

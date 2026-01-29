@@ -9,7 +9,7 @@ class Reserve extends Model
 
 protected $primaryKey='reserve_id';
 protected $keyType='string';
-protected $incrementing=false;
+public $incrementing=false;
 protected $fillable=[
 'status',
 'reserve_at',

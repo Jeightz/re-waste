@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 class UserAuth extends Model
 {
 protected $keyType='string';
-protected $incrementing=false;
+public $incrementing=false;
 protected $fillable=[
 'username',
 'password'];

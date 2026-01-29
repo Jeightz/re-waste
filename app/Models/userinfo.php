@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 class UserInfo extends Model
 {
 protected $keyType='string';
-protected $incrementing=false;
+public $incrementing=false;
 
 protected $fillable=[
     'name',

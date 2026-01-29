@@ -9,7 +9,7 @@ class waste_log extends Model
 {
 protected $primaryKey='waste_id';
 protected $keyType='string';
-protected $incrementing=false;
+public $incrementing=false;
 
 protected $fillable=[
 'food_id',
