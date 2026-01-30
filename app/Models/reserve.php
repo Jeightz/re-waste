@@ -31,4 +31,7 @@ public function food(){
 public function redistributer(){
 return $this->belongsTo(UserAuth::class,'redistributer_id');
 }
+public static function findFoodReserveByFoodID(Food $food){
+return self::find($food->food_id)->first();
+}
 }

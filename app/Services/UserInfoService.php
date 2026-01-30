@@ -3,14 +3,22 @@ namespace App\Services;
 use App\Models\UserInfo;
 use App\Models\UserAuth;
 use Carbon\Carbon;
-class UserInfoService{
+use App\Services\Parents\RegistrationService;
+use Illuminate\Database\Eloquent\Model;
+class UserInfoService extends RegistrationService{
 
-public function Register(array $data,UserAuth $userAuth){
-return UserInfo::create(['userinfo_id'=>$userAuth->id,
-'name'=>$data['name'],
-'email'=>$data['email'],
-'role'=>$data['role'],
-'created_at'=>Carbon::today()]);
+
+
+protected function processRecord(array $data):array{
+    return ['userinfo_id'=>$data['id'],
+    'name'=>$data['name'],
+    'email'=>$data['email'],
+    'role'=>$data['role'],
+    'created_at'=>Carbon::today()];
+}
+
+protected function createRecord(array $data):Model{
+    return UserInfo::create($data);
 }
 }
 

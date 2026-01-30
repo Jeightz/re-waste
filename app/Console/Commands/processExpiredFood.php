@@ -19,7 +19,7 @@ class processExpiredFood extends Command
     }
     public function handle()
     {
-        $this->service->processExpiredFood();
-        $this->info('Successfuly tranfer of expired Food');
+        $this->service->process();
+        $this->info('Successfully transfer of expired Food');
     }
 }

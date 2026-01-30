@@ -5,27 +5,32 @@ use App\Models\Food;
 use App\Models\waste_log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Services\Parents\ScheduleProcessService;
+use Illuminate\Database\Eloquent\Collection;
 
-class FoodExpiryService
+class FoodExpiryService extends ScheduleProcessService
 {
-    public function processExpiredFood(): void
-    {
-        DB::transaction(function () {
 
-            $expiredFoods = Food::where('expiry_date', '<', Carbon::today())
+
+protected function getItemsToProcess():Collection{
+    return Food::where('expiry_date', '<', Carbon::today())
                 ->where('status', '!=', 'expired')
                 ->get();
 
-            foreach ($expiredFoods as $food) {
-
-                waste_log::create([
-                    'food_id'     => $food->id,
-                    'expired_at'  => $food->expiry_date,
-                    'quantity_waste' => $food->quantity,
-                ]);
-
-$food->update(['status'=>'expired']);
-            }
-        });
     }
+
+    protected function createRecordLog(array $data):void{
+        waste_log::create($data);
+    }
+
+    protected function processData(array $data):array{
+return[             'food_id'     => $data['food_id'],
+                    'expired_at'  => $data['expired_at'],
+                    'quantity_waste' => $data['quantity_waste'],
+                ];
+    }
+
+
+
+
 }
