@@ -12,7 +12,7 @@ protected $fillable=[
 'username',
 'password'];
 
-public  function infoUserid(){
+public  function info(){
 return $this->hasOne(UserInfo::class,'userinfo_id');
 }
 
@@ -28,5 +28,7 @@ $model->{$model->getKeyName()}=(string)\Str::uuid();
 }
 });
 }
+
+
 
 }

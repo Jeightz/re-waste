@@ -30,4 +30,6 @@ return  $this->belongsTo(UserAuth::class,'distributed_user_id');
 public function food(){
 return $this->belongsTo(Food::class,'food_id');
 }
+
+
 }

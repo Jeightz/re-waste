@@ -12,7 +12,7 @@ class UserAuthPolicy
  *determine if the username is valid to register
  */
 
-public function isUsernameValid(string $username){
+public static function isUsernameValid(string $username){
 $checkusername=UserAuth::findUsername($username);
 
 if($checkusername == null){

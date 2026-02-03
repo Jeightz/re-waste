@@ -14,7 +14,7 @@ public function AddReserveFood(Food $foodData,UserAuth $userAuth){
     return Reserve::create(['status'=>'waiting for pickup',
     'reserve_at'=>Carbon::today(),
     'food_id'=>$foodData->food_id,
-    'redistributer_id'=>$userAuth->id]);
+    'redistributer_id'=>$userAuth->info?->id]);
 }
 public function CancelReserveFood(Food $food,Reserve $reserve){
     $food->update(['status'=>'available']);
